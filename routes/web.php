@@ -24,6 +24,6 @@ Route::resource(
     'notifications',
     'App\Http\Controllers\NotificationController',
     [
-        'except' => ['index']
+        'except' => ['edit']
     ]
 );

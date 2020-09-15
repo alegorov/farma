@@ -13,10 +13,14 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'notifications',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->jsonb('json_data');
+                $table->timestamps();
+            }
+        );
     }
 
     /**
