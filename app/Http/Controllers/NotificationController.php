@@ -15,7 +15,7 @@ class NotificationController extends Controller
     public function index()
     {
         $items = Notification::select('id', 'created_at', 'updated_at')
-            ->orderBy('created_at')->get()->all();
+            ->orderBy('id')->get()->all();
 
         return response()->json($items);
     }

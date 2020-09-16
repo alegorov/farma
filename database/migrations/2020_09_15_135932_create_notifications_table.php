@@ -16,7 +16,7 @@ class CreateNotificationsTable extends Migration
         Schema::create(
             'notifications',
             function (Blueprint $table) {
-                $table->string('id')->primary();
+                $table->unsignedBigInteger('id')->primary();
                 $table->jsonb('json_data');
                 $table->timestamps();
             }
