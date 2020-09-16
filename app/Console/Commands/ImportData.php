@@ -165,17 +165,21 @@ class ImportData extends Command
 
                     if (isset($array['export']['fcsNotificationEF']['id'])) {
                         $id = $array['export']['fcsNotificationEF']['id'];
+                    } elseif (isset($array['export']['fcsNotificationCancel']['id'])) {
+                        $id = $array['export']['fcsNotificationCancel']['id'];
+                    } else {
+                        $id = '';
+                    }
 
-                        if (strlen($id)) {
-                            $json_data = json_encode($array);
+                    if (strlen($id)) {
+                        $json_data = json_encode($array);
 
-                            $item = Notification::find($id);
+                        $item = Notification::find($id);
 
-                            if ($item) {
-                                $item->update(compact('json_data'));
-                            } else {
-                                Notification::create(compact('id', 'json_data'));
-                            }
+                        if ($item) {
+                            $item->update(compact('json_data'));
+                        } else {
+                            Notification::create(compact('id', 'json_data'));
                         }
                     }
                 }

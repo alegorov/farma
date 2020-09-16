@@ -1,0 +1,167 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Medline Farma API",
+        "description": "Medline Farma API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/notifications": {
+            "get": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Get list of notifications",
+                "operationId": "App\\Http\\Controllers\\NotificationController::index",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Create notification",
+                "description": "Create notification",
+                "operationId": "App\\Http\\Controllers\\NotificationController::store",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Notification id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "json_data",
+                        "in": "query",
+                        "description": "Notification JSON string",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            }
+        },
+        "/notifications/{notification_id}": {
+            "get": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Get notification by id",
+                "description": "Get notification by id",
+                "operationId": "App\\Http\\Controllers\\NotificationController::show",
+                "parameters": [
+                    {
+                        "name": "notification_id",
+                        "in": "path",
+                        "description": "Notification id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "404": {
+                        "description": "Notification is not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Update notification by id",
+                "description": "Update notification by id",
+                "operationId": "App\\Http\\Controllers\\NotificationController::update",
+                "parameters": [
+                    {
+                        "name": "notification_id",
+                        "in": "path",
+                        "description": "Notification id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "json_data",
+                        "in": "query",
+                        "description": "Notification JSON string",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "404": {
+                        "description": "Notification is not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Delete notification by id",
+                "description": "Delete notification by id",
+                "operationId": "App\\Http\\Controllers\\NotificationController::destroy",
+                "parameters": [
+                    {
+                        "name": "notification_id",
+                        "in": "path",
+                        "description": "Notification id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "404": {
+                        "description": "Notification is not found"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

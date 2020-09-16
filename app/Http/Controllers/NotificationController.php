@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 class NotificationController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Get(
+     *     path="/notifications",
+     *     summary="Get list of notifications",
+     *     tags={"Notifications"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user",
+     *     ),
+     * )
      */
     public function index()
     {
@@ -21,10 +31,38 @@ class NotificationController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/notifications",
+     *     summary="Create notification",
+     *     tags={"Notifications"},
+     *     description="Create notification",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="query",
+     *         description="Notification id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Parameter(
+     *         name="json_data",
+     *         in="query",
+     *         description="Notification JSON string",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user",
+     *     ),
+     * )
      */
     public function store(Request $request)
     {
@@ -37,10 +75,33 @@ class NotificationController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Notification $notification
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Get(
+     *     path="/notifications/{notification_id}",
+     *     summary="Get notification by id",
+     *     tags={"Notifications"},
+     *     description="Get notification by id",
+     *     @OA\Parameter(
+     *         name="notification_id",
+     *         in="path",
+     *         description="Notification id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user",
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Notification is not found",
+     *     )
+     * )
      */
     public function show(Notification $notification)
     {
@@ -60,11 +121,42 @@ class NotificationController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Notification $notification
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Put(
+     *     path="/notifications/{notification_id}",
+     *     summary="Update notification by id",
+     *     tags={"Notifications"},
+     *     description="Update notification by id",
+     *     @OA\Parameter(
+     *         name="notification_id",
+     *         in="path",
+     *         description="Notification id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Parameter(
+     *         name="json_data",
+     *         in="query",
+     *         description="Notification JSON string",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user",
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Notification is not found",
+     *     )
+     * )
      */
     public function update(Request $request, Notification $notification)
     {
@@ -76,10 +168,33 @@ class NotificationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Notification $notification
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Delete(
+     *     path="/notifications/{notification_id}",
+     *     summary="Delete notification by id",
+     *     tags={"Notifications"},
+     *     description="Delete notification by id",
+     *     @OA\Parameter(
+     *         name="notification_id",
+     *         in="path",
+     *         description="Notification id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized user",
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Notification is not found",
+     *     )
+     * )
      */
     public function destroy(Notification $notification)
     {

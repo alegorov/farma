@@ -1,0 +1,16 @@
++--------+-----------+------------------------------+------------------------------------+-------------------------------------------------------------+----------------------------------+
+| Domain | Method    | URI                          | Name                               | Action                                                      | Middleware                       |
++--------+-----------+------------------------------+------------------------------------+-------------------------------------------------------------+----------------------------------+
+|        | GET|HEAD  | /                            |                                    | Closure                                                     | web                              |
+|        | GET|HEAD  | api/documentation            | l5-swagger.default.api             | L5Swagger\Http\Controllers\SwaggerController@api            | L5Swagger\Http\Middleware\Config |
+|        | GET|HEAD  | api/oauth2-callback          | l5-swagger.default.oauth2_callback | L5Swagger\Http\Controllers\SwaggerController@oauth2Callback | L5Swagger\Http\Middleware\Config |
+|        | GET|HEAD  | api/user                     |                                    | Closure                                                     | api                              |
+|        |           |                              |                                    |                                                             | auth:api                         |
+|        | GET|HEAD  | docs/asset/{asset}           | l5-swagger.default.asset           | L5Swagger\Http\Controllers\SwaggerAssetController@index     | L5Swagger\Http\Middleware\Config |
+|        | GET|HEAD  | docs/{jsonFile?}             | l5-swagger.default.docs            | L5Swagger\Http\Controllers\SwaggerController@docs           | L5Swagger\Http\Middleware\Config |
+|        | GET|HEAD  | notifications                | notifications.index                | App\Http\Controllers\NotificationController@index           | web                              |
+|        | POST      | notifications                | notifications.store                | App\Http\Controllers\NotificationController@store           | web                              |
+|        | GET|HEAD  | notifications/{notification} | notifications.show                 | App\Http\Controllers\NotificationController@show            | web                              |
+|        | PUT|PATCH | notifications/{notification} | notifications.update               | App\Http\Controllers\NotificationController@update          | web                              |
+|        | DELETE    | notifications/{notification} | notifications.destroy              | App\Http\Controllers\NotificationController@destroy         | web                              |
++--------+-----------+------------------------------+------------------------------------+-------------------------------------------------------------+----------------------------------+
