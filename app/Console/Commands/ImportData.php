@@ -174,13 +174,10 @@ class ImportData extends Command
                     if (strlen($id)) {
                         $json_data = json_encode($array);
 
-                        $item = Notification::find($id);
-
-                        if ($item) {
-                            $item->update(compact('json_data'));
-                        } else {
-                            Notification::create(compact('id', 'json_data'));
-                        }
+                        Notification::updateOrCreate(
+                            compact('id'),
+                            compact('json_data')
+                        );
                     }
                 }
 
