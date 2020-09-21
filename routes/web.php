@@ -31,3 +31,6 @@ Route::resource(
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::view('/vue', 'vue');
+Route::resource('/api/events', 'App\Http\Controllers\API\EventsController');
